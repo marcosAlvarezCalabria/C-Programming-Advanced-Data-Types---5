@@ -6,15 +6,21 @@ struct date {
         int day;
     };
 
-void readDate(struct date *);
+/* function prototypes */
 void printDate(struct date);
+void readDate(struct date *);
+
+struct date advanceDay(struct date); 
 
 int main(void) {
-	struct date today;
+	struct date today, tomorrow;
 	readDate(&today);
 	printDate(today);
+	tomorrow = advanceDay(today);
+	printDate(tomorrow);
 	return 0;
 }
+
 void readDate(struct date *fecha){
     scanf("%d %d %d", &(*fecha).year, &(*fecha).month, &(*fecha).day);
         
@@ -28,7 +34,12 @@ void printDate(struct date today){
     } else if (today.day < 10 && today.month > 10){
         printf("%d/0%d/%d", today.month, today.day, today.year);
     }
-    
+}
+struct  date advanceDay(struct date today){
 
-    
+
+today.day = today.day + 1;
+
+
+
 }
