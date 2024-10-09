@@ -18,11 +18,11 @@ luego asignar la cantidad adecuada de memoria, inicializar la matriz con la func
 #include <stdio.h>
 #include <stdlib.h>
 
-struct point{
+struct point{//creamos la estructura
 	int x;
 	int y;
 };
-
+//prototypes functions
 void printPoint(struct point);
 void printPoly(struct point *, int);
 void initializePoly(struct point *, int);
@@ -31,23 +31,25 @@ int main(void) {
     int vertices;
     struct point * poligon ;
     
-    scanf("%d", &vertices);
+    scanf("%d", &vertices);// leemos la entrada del numero de vertices
 
-    poligon = (struct point *) malloc(vertices *(sizeof (struct point))) ;
+    poligon = (struct point *) malloc(vertices *(sizeof (struct point))) ;// guadamos la memoria necesario con para nuestro poligono
 
-    initializePoly(poligon, vertices); 
+
+    initializePoly(poligon, vertices);//inicializamos el poligon  
     
-    printPoly( poligon, vertices);
+    printPoly( poligon, vertices);//imprimimos el poligono 
 
-    free(poligon);
+    free(poligon);//liberamos la memoria
     
 }
 
 void printPoint(struct point pt) {
-    printf("(%d, %d)\n", pt.x, pt.y);
+    printf("(%d, %d)\n", pt.x, pt.y);//imprimimos los puntos 
 }
 
-void printPoly(struct point *ptr, int N) {
+void printPoly(struct point *ptr, int N) {//imprimimos el poligono llamando a printPoint el numero de veces 
+                                          //que tenga el vertice      
     int i;
     for (i=0; i<N; i++) {
         printPoint(ptr[i]);
@@ -55,11 +57,11 @@ void printPoly(struct point *ptr, int N) {
 }
 
 // Write your initializePoly() function here
-void initializePoly(struct point * poligon, int vertices)
+void initializePoly(struct point * poligon, int vertices)//inicializamos el poligono con sus vertices
 {
     int i ;
 
-    for (i = 0; i < vertices; i++)
+    for (i = 0; i < vertices; i++)//asignamos a cada vertice un eje y y uno x 
     {
         poligon[i].x -= i;
         poligon[i].y = i * i;        
